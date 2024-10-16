@@ -5,6 +5,13 @@
 }
 
 .app {
-    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    max-width: 1280px;
+    height: 100vh;
     margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr; 
 }
