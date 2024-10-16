@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "easytimer.js": "^4.6.0",
+    "framer-motion": "^11.11.9"
+  }
+}
