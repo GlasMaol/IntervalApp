@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.timesUpPage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #222222;
+    position: relative;
+}
+
+.newTimer-btn {
+    position: absolute;
+    color: white;
+    bottom: 3rem;
+    width: 150px;
+    height: 41px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #222222;
+}
+
+.h1-timesUp {
+    margin-top: 2rem;
+    color: white;
+    top: 1rem;
+    font-family: pt Sans;
+    font-family: "PT Sans", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 5px;
+}
