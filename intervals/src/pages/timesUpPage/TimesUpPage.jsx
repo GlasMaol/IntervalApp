@@ -1,5 +1,6 @@
 import React from 'react'
 import '../timesUpPage/timesUpPage.css'
+import { Link } from 'react-router-dom'
 
 function TimesUpPage() {
   return (
@@ -8,10 +9,11 @@ function TimesUpPage() {
       <h1 className="h1-timesUp">
         Times Up!
       </h1>
-
-      <button className='newTimer-btn'>
-        SET NEW TIMER
-      </button>
+      <Link to="/time" className='newTimer-link'>
+        <button className='newTimer-btn'>
+          SET NEW TIMER
+        </button>
+      </Link>
     </div>
   )
 }
