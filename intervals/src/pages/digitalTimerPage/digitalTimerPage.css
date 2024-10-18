@@ -11,16 +11,6 @@
     position: relative;
 }
 
-.navicon {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
 .h2 {
     position: absolute;
     top: 1rem;
@@ -44,48 +34,4 @@
     border-radius: 5px;
     background-color: white;
     opacity: .6;
-}
-
-.fullscreen-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.fullscreen-nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
-
-.fullscreen-nav li {
-    margin: 20px 0;
-}
-
-.fullscreen-nav a {
-    color: white;
-    font-size: 2rem;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.fullscreen-nav a:hover {
-    color: lightgray;
-}
-
-.fullscreen-nav .navicon {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
 }

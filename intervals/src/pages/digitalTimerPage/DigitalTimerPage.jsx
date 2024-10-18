@@ -1,40 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Countdown from '../../components/countdown/countdown'; // Import your countdown component
+import Countdown from '../../components/countdown/countdown';
 import '../digitalTimerPage/digitalTimerPage.css';
+import Nav from '../../components/nav/Nav';
 
 function DigitalTimerPage({ timeLeft, stopTimer }) {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
   return (
     <div className="digitalTimerPage-container">
-      <img
-        className="navicon"
-        src="../src/assets/navicon.svg"
-        alt="nav icon"
-        onClick={toggleNav}
-      />
-      {isNavOpen && (
-        <div className="fullscreen-nav">
-          <img
-            className="navicon"
-            src="../src/assets/navicon.svg"
-            alt="close menu"
-            onClick={toggleNav}
-          />
-          <ul>
-            <li><Link to="/analog" onClick={toggleNav}>Analog Timer</Link></li>
-            <li><Link to="/digital" onClick={toggleNav}>Digital Timer</Link></li>
-          </ul>
-        </div>
-      )}
+      <Nav />
       <h2 className="h2">Digital Timer</h2>
       <section className="clock-container">
-        <Countdown initialTime={timeLeft} view="digital" /> {/* Pass the time left to Countdown */}
+        {/* Use the Countdown component with the timeLeft prop */}
+        <Countdown initialTime={timeLeft} view="digital" />
       </section>
       <button className="cancelTimer-btn" onClick={stopTimer}>
         CANCEL TIMER
@@ -45,55 +20,26 @@ function DigitalTimerPage({ timeLeft, stopTimer }) {
 
 export default DigitalTimerPage;
 
-/*import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+
+
+/*import Countdown from '../../components/countdown/countdown';
 import '../digitalTimerPage/digitalTimerPage.css';
+import Nav from '../../components/nav/Nav';
 
-function DigitalTimerPage() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const navigate = useNavigate(); 
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-  const handleCancel = () => {
-    navigate('/time');
-  };
+function DigitalTimerPage({ timeLeft, stopTimer }) {
 
   return (
     <div className="digitalTimerPage-container">
-
-      <img
-        className="navicon"
-        src="../src/assets/navicon.svg"
-        alt="nav icon"
-        onClick={toggleNav}
-      />
-
-      {isNavOpen && (
-        <div className="fullscreen-nav">
-          <img
-            className="navicon"
-            src="../src/assets/navicon.svg"
-            alt="close menu"
-            onClick={toggleNav}
-          />
-          <ul>
-            <li><Link to="/analog" onClick={toggleNav}>Analog Timer</Link></li>
-            <li><Link to="/digital" onClick={toggleNav}>Digital Timer</Link></li>
-          </ul>
-        </div>
-      )}
-
-      <h2 className="h2">interval</h2>
+      <Nav />
+      <h2 className="h2">Digital Timer</h2>
       <section className="clock-container">
-        this is the digital clock
+        <Countdown initialTime={timeLeft} view="digital" />
       </section>
-      <button className="cancelTimer-btn" onClick={handleCancel}>
+      <button className="cancelTimer-btn" onClick={stopTimer}>
         CANCEL TIMER
       </button>
     </div>
   );
 }
+
 export default DigitalTimerPage;*/

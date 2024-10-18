@@ -1,4 +1,4 @@
-import React from 'react'
+
 import '../timesUpPage/timesUpPage.css'
 import { Link } from 'react-router-dom'
 

@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "../src/pages/landingPage/LandingPage";
 import SetTimerPage from "../src/pages/setTimerPage/SetTimerPage";
 import AnalogTimerPage from "../src/pages/analogTimerPage/AnalogTimerPage";
 import DigitalTimerPage from "../src/pages/digitalTimerPage/DigitalTimerPage";
 import TimesUpPage from "../src/pages/timesUpPage/TimesUpPage";
+import Timer from "easytimer";
 
 function App() {
-  const [duration, setDuration] = useState(0);
+  const timer = new Timer();
   const [timeLeft, setTimeLeft] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    let timer = null;
-    if (isActive && timeLeft > 0) {
-      timer = setInterval(() => {
-        setTimeLeft((prev) => Math.max(prev - 1, 0));
-      }, 1000);
+    if (isActive) {
+      timer.start({ countdown: true, startValues: { seconds: timeLeft } });
+
+      timer.addEventListener("secondsUpdated", function () {
+        const remainingTime = timer.getTotalTimeValues().seconds;
+        setTimeLeft(remainingTime);
+      });
+
+      timer.addEventListener("targetAchieved", function () {
+        navigate("/timesup");
+      });
     }
 
-    // Clean up timer on unmount or when dependencies change
-    return () => clearInterval(timer);
-  }, [isActive, timeLeft]);
+    return () => {
+      timer.stop();
+    };
+  }, [isActive, timeLeft, timer, navigate]);
 
   const startTimer = (minutes) => {
-    setDuration(minutes);
-    setTimeLeft(minutes * 60); // Convert minutes to seconds
+    setTimeLeft(minutes * 60);
     setIsActive(true);
-    navigate('/analog'); // Navigate to the analog view immediately after starting the timer
+    navigate("/analog");
   };
 
   const stopTimer = () => {
     setIsActive(false);
     setTimeLeft(0);
-    navigate('/time'); // Navigate back to SetTimerPage
+    navigate("/time");
   };
 
   return (
@@ -52,27 +59,67 @@ function App() {
 
 export default App;
 
-/*import { Routes, Route } from "react-router-dom";
+
+
+
+
+/*import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "../src/pages/landingPage/LandingPage";
-import Time from "../src/pages/setTimerPage/SetTimerPage";
-import Analog from "../src/pages/analogTimerPage/AnalogTimerPage";
-import Digital from "../src/pages/digitalTimerPage/DigitalTimerPage";
-import TimesUp from "../src/pages/timesUpPage/TimesUpPage";
+import SetTimerPage from "../src/pages/setTimerPage/SetTimerPage";
+import AnalogTimerPage from "../src/pages/analogTimerPage/AnalogTimerPage";
+import DigitalTimerPage from "../src/pages/digitalTimerPage/DigitalTimerPage";
+import TimesUpPage from "../src/pages/timesUpPage/TimesUpPage";
+import Timer from "easytimer";
 
+function App({time}) {
+  const timer = newTimer();
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
-function App() {
+  useEffect(() => {
+    console.log(time);
+    timer.start({countdown: true, startValues: {seconds: time}});
+    timer.addEventListener('secondsUpdated', function (e) {
+      setTimeLeft(timer.getTimeValues().toString());
+    })
+  }, []);
+
+  /*useEffect(() => {
+    let timer = null;
+    if (isActive && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft((prev) => Math.max(prev - 1, 0));
+      }, 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [isActive, timeLeft]);*/
+
+  /*const startTimer = (minutes) => {
+    setTimeLeft(minutes * 60);
+    setIsActive(true);
+    navigate('/analog');
+  };
+
+  const stopTimer = () => {
+    setIsActive(false);
+    setTimeLeft(0);
+    navigate('/time');
+  };
 
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/time" element={<Time />} />
-        <Route path="/analog" element={<Analog />} />
-        <Route path="/digital" element={<Digital />} />
-        <Route path="/timesup" element={<TimesUp />} />
+        <Route path="/time" element={<SetTimerPage setTimerDuration={startTimer} />} />
+        <Route path="/analog" element={<AnalogTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} />
+        <Route path="/digital" element={<DigitalTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} />
+        <Route path="/timesup" element={<TimesUpPage />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App*/
+export default App;*/
