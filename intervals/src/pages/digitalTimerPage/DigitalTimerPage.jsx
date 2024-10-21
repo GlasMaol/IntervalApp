@@ -1,6 +1,7 @@
 import Countdown from '../../components/countdown/countdown';
 import '../digitalTimerPage/digitalTimerPage.css';
 import Nav from '../../components/nav/Nav';
+import { motion } from 'framer-motion';
 
 function DigitalTimerPage({ timeLeft, stopTimer }) {
   return (
@@ -8,12 +9,24 @@ function DigitalTimerPage({ timeLeft, stopTimer }) {
       <Nav />
       <h2 className="h2">Digital Timer</h2>
       <section className="clock-container">
-        {/* Use the Countdown component with the timeLeft prop */}
         <Countdown initialTime={timeLeft} view="digital" />
       </section>
-      <button className="cancelTimer-btn" onClick={stopTimer}>
+      <motion.button
+        whileHover={{
+          scale: 1.2,
+        }}
+        whileTap={{
+          scale: 0.8,
+        rotate: '3deg'
+
+        }}
+        transition={{
+          duration: 0.2,
+          ease: 'easeInOut'
+        }}
+        className="cancelTimer-btn" onClick={stopTimer}>
         CANCEL TIMER
-      </button>
+      </motion.button>
     </div>
   );
 }

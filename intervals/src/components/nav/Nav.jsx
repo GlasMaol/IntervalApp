@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../nav/nav.css';
+import { motion } from 'framer-motion';
 
 function Nav() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -26,8 +27,30 @@ function Nav() {
                         onClick={toggleNav}
                     />
                     <ul>
-                        <li><Link to="/analog" onClick={toggleNav}>Analog Timer</Link></li>
-                        <li><Link to="/digital" onClick={toggleNav}>Digital Timer</Link></li>
+                        <motion.li
+                            whileHover={{
+                                scale: 1.2,
+                            }}
+                            whileTap={{
+                                scale: 0.8,
+                            }}
+                            transition={{
+                                duration: 0.2,
+                                ease: 'easeInOut'
+                            }}
+                        ><Link to="/analog" onClick={toggleNav}>Analog Timer</Link></motion.li>
+                        <motion.li
+                            whileHover={{
+                                scale: 1.2,
+                            }}
+                            whileTap={{
+                                scale: 0.8,
+                            }}
+                            transition={{
+                                duration: 0.2,
+                                ease: 'easeInOut'
+                            }}
+                        ><Link to="/digital" onClick={toggleNav}>Digital Timer</Link></motion.li>
                     </ul>
                 </div>
             )}

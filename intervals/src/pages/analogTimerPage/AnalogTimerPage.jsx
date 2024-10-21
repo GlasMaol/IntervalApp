@@ -1,6 +1,7 @@
 import Countdown from '../../components/countdown/countdown';
 import '../analogTimerPage/analogTimerPage.css';
 import Nav from '../../components/nav/Nav';
+import { motion } from 'framer-motion';
 
 function AnalogTimerPage({ timeLeft, stopTimer }) {
   return (
@@ -10,9 +11,21 @@ function AnalogTimerPage({ timeLeft, stopTimer }) {
       <section className="clock-container">
         <Countdown initialTime={timeLeft} view="analog" />
       </section>
-      <button className="cancelTimer-btn" onClick={stopTimer}>
+      <motion.button
+        whileHover={{
+          scale: 1.2,
+        }}
+        whileTap={{
+          scale: 0.8,
+          rotate: '3deg'
+        }}
+        transition={{
+          duration: 0.2,
+          ease: 'easeInOut'
+        }}
+        className="cancelTimer-btn" onClick={stopTimer}>
         CANCEL TIMER
-      </button>
+      </motion.button>
     </div>
   );
 }

@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import '../countdown/countdown.css';
 
-const Countdown = ({ initialTime, view }) => {
-    const minutes = Math.floor(initialTime / 60);
-    const seconds = initialTime % 60;
-    const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+
+// Countdown-komponenten med initial tid och vy
+const Countdown = ({ initialTime, view }) => { 
+    const minutes = Math.floor(initialTime / 60); // Beräknar minuter från initial tid
+    const seconds = initialTime % 60; // Beräknar sekunder från initial tid
+    const formattedSeconds = seconds < 10 ? '0' + seconds : seconds; // Formaterar sekunder till två siffror
     const navigate = useNavigate();
 
     const minuteRotation = minutes * 6;
@@ -24,6 +26,7 @@ const Countdown = ({ initialTime, view }) => {
                 <div className="clock-container">
                     <div className="clock-face">
                         {[...Array(60)].map((_, i) => (
+                             // Mappar 60 minutmarkeringar runt klockan
                             <div
                                 key={i}
                                 className="minute-mark"
@@ -62,6 +65,7 @@ const Countdown = ({ initialTime, view }) => {
 };
 
 export default Countdown;
+
 
 
 /*import { useEffect, useState } from 'react';
