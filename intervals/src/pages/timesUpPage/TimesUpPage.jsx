@@ -19,9 +19,33 @@ function TimesUpPage() {
           repeatType: "loop",
         }}
       />
-      <h1 className="h1-timesUp">
+      <motion.h1
+        className="h1-timesUp"
+        initial={{
+          y: -50,
+          opacity: 0
+        }}
+        animate={{
+          y: [0, -10, 0],
+          opacity: [0, 1, 1],
+        }}
+        transition={{
+          y: {
+            duration: 1,
+            ease: "easeOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          },
+          opacity: {
+            duration: 1,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          },
+        }}
+      >
         Times Up!
-      </h1>
+      </motion.h1>
       <Link to="/time" className='newTimer-link'>
         <motion.button
           whileHover={{

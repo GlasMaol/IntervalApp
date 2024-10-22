@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if (isActive) {
-      timer.start({ countdown: true, startValues: { seconds: timeLeft } }); // Startar timern med nedräkning
+      timer.start({ countdown: true, startValues: { seconds: timeLeft } }); // Startar timern med nedräkningen
 
       timer.addEventListener("secondsUpdated", function () {
         const remainingTime = timer.getTotalTimeValues().seconds; // Hämtar tiden kvar
@@ -33,9 +33,9 @@ function App() {
   }, [isActive, timeLeft, timer, navigate]);
 
   const startTimer = (minutes) => {
-    setTimeLeft(minutes * 60); // Ställer in tiden kvar i sekunder
+    setTimeLeft(minutes * 60); // tiden kvar i sekunder
     setIsActive(true);
-    navigate("/analog");
+    navigate("/digital");
   };
 
   const stopTimer = () => {
@@ -45,13 +45,18 @@ function App() {
   };
 
   return (
+    //Props:
+    // SetTimerPage tar emot setTimerDuration prop
+    // AnalogTimerPage och DigitalTimerPage tar emot timeLeft prop (som initialTime) och stopTimer prop
+    // 
+
     <div className="app">
       <Routes>
-        <Route path="/" element={<Home />} /> // Definierar vägen för startsidan
-        <Route path="/time" element={<SetTimerPage setTimerDuration={startTimer} />} /> // Definierar vägen för att ställa in timern
-        <Route path="/analog" element={<AnalogTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} /> // Definierar vägen för den analoga timern
-        <Route path="/digital" element={<DigitalTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} /> // Definierar vägen för den digitala timern
-        <Route path="/timesup" element={<TimesUpPage />} /> // Definierar vägen för sidan när tiden är slut
+        <Route path="/" element={<Home />} />
+        <Route path="/time" element={<SetTimerPage setTimerDuration={startTimer} />} />
+        <Route path="/analog" element={<AnalogTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} />
+        <Route path="/digital" element={<DigitalTimerPage timeLeft={timeLeft} stopTimer={stopTimer} />} />
+        <Route path="/timesup" element={<TimesUpPage />} />
       </Routes>
     </div>
   );

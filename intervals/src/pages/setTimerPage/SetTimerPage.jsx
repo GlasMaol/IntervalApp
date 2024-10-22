@@ -3,24 +3,26 @@ import '../setTimerPage/setTimerPage.css';
 import Nav from '../../components/nav/Nav';
 import { motion } from 'framer-motion';
 
+// tar emot setTimerDuration från App
+// handleStartTimer konverterar input till en siffra och anropar setTimerDuration om duration är över noll
+//
+
 function SetTimerPage({ setTimerDuration }) {
-  const [minutesInput, setMinutesInput] = useState(0); // State för att hålla koll på användarens inmatade minuter
+  const [minutesInput, setMinutesInput] = useState(0);
 
   const handleStartTimer = () => {
-    const duration = parseInt(minutesInput); // Konverterar inmatade minuter till ett nummer
+    const duration = parseInt(minutesInput); // Konverterar inmatade minuter till en siffra
     if (duration > 0) {
       setTimerDuration(duration);
     }
   };
 
-  // Funktion kopplad till höger pil
   const increaseTime = () => {
-    setMinutesInput((prev) => Math.min(prev + 1, 59)); // Ökar minuterna, max 59
+    setMinutesInput((prev) => Math.min(prev + 1, 59));
   };
 
-  // Funktion kopplad till vänster pil
   const decreaseTime = () => {
-    setMinutesInput((prev) => Math.max(prev - 1, 0)); // Minskar minuterna, min 0
+    setMinutesInput((prev) => Math.max(prev - 1, 0));
   };
 
   return (
@@ -50,7 +52,7 @@ function SetTimerPage({ setTimerDuration }) {
           placeholder="Minutes"
           value={minutesInput}
           onChange={(e) => setMinutesInput(Math.max(0, Math.min(59, e.target.value)))}
-          // Uppdaterar minutesInput vid förändring, begränsar mellan 0 och 59
+          // Uppdaterar minutesInput, begränsar mellan 0 och 59
         />
         <motion.img
         whileHover={{
@@ -73,10 +75,12 @@ function SetTimerPage({ setTimerDuration }) {
       <motion.button 
       whileHover={{
         scale: 1.05,
+        boxShadow: 'inset 0px 0px 5px .5px green',
       }}
       whileTap={{
         scale: 0.9,
-        rotate: '3deg'
+        rotate: '1deg',
+        boxShadow: '2px 2px 10px .5px green',
       }}
       transition={{
         duration: 0.15,
@@ -90,64 +94,3 @@ function SetTimerPage({ setTimerDuration }) {
 }
 
 export default SetTimerPage;
-
-
-
-
-
-/*import { useState } from 'react';
-import '../setTimerPage/setTimerPage.css';
-import Nav from '../../components/nav/Nav';
-
-function SetTimerPage({ setTimerDuration }) {
-  const [minutesInput, setMinutesInput] = useState(0);
-
-  const handleStartTimer = () => {
-    const duration = parseInt(minutesInput);
-    if (duration > 0) {
-      setTimerDuration(duration);
-    }
-  };
-
-  const increaseTime = () => {
-    setMinutesInput((prev) => Math.min(prev + 1, 59));
-  };
-
-  const decreaseTime = () => {
-    setMinutesInput((prev) => Math.max(prev - 1, 0));
-  };
-
-  return (
-    <div className='setTimer-container'>
-      <Nav />
-      <section className='timeControls-container'>
-        <img
-          src="../src/assets/left-arrow.svg"
-          alt="arrow left"
-          onClick={decreaseTime}
-          className='arrow-icon'
-        />
-        <input
-          type="number"
-          min="0"
-          max="59"
-          placeholder="Minutes"
-          value={minutesInput}
-          onChange={(e) => setMinutesInput(Math.max(0, Math.min(59, e.target.value)))}
-        />
-        <img
-          src="../src/assets/right-arrow.svg"
-          alt="arrow right"
-          onClick={increaseTime}
-          className='arrow-icon'
-        />
-      </section>
-      <h2>minutes</h2>
-      <button className='setTime-btn' onClick={handleStartTimer}>
-        START TIMER
-      </button>
-    </div>
-  );
-}
-
-export default SetTimerPage;*/

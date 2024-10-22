@@ -19,14 +19,6 @@ h2 {
     position: relative;
 }
 
-.navicon {
-    position: absolute;
-    width: 32px;
-    aspect-ratio: 1;
-    top: 1rem;
-    left: 1rem;
-}
-
 .setTime-btn {
     position: absolute;
     bottom: 3rem;
@@ -44,16 +36,6 @@ h2 {
     letter-spacing: 3px;
 }
 
-.chooseTime-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    width: 280px;
-    height: 120px;
-    background-color: white;
-}
-
 .timeControls-container {
     width: 280px;
     height: 120px;
@@ -68,7 +50,7 @@ h2 {
 }
 
 .timeControls-container input {
-    width: 80px;
+    width: 100px;
     height: 100px;
     text-align: center;
     border: none;
