@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+h2 {
+    font-family: "PT Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    opacity: .6;
+}
+.setTimer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #eeeeee;
+    position: relative;
+}
+
+.setTime-btn {
+    position: absolute;
+    bottom: 3rem;
+    width: 280px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "PT Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+.timeControls-container {
+    width: 280px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.timeControls-container input {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border: none;
+    background-color: #eeeeee;
+    font-size: 80px;
+}
+
+
+.arrow-icon {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
