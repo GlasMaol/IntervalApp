@@ -9,6 +9,90 @@
     width: 100%;
     background-color: #222222;
     position: relative;
+    background: radial-gradient(circle,
+            #444444,
+            #222222,
+            #111111);
+    animation: gradientAnimation 1s infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background: radial-gradient(circle,
+                #444444,
+                #222222,
+                #111111);
+    }
+
+    10% {
+        background: radial-gradient(circle,
+                #3f3f3f,
+                #1f1f1f,
+                #0f0f0f);
+    }
+
+    20% {
+        background: radial-gradient(circle,
+                #3a3a3a,
+                #1e1e1e,
+                #0e0e0e);
+    }
+
+    30% {
+        background: radial-gradient(circle,
+                #353535,
+                #1c1c1c,
+                #0d0d0d);
+    }
+
+    40% {
+        background: radial-gradient(circle,
+                #303030,
+                #1b1b1b,
+                #0c0c0c);
+    }
+
+    50% {
+        background: radial-gradient(circle,
+                #2b2b2b,
+                #191919,
+                #0b0b0b);
+    }
+
+    60% {
+        background: radial-gradient(circle,
+                #262626,
+                #171717,
+                #0a0a0a);
+    }
+
+    70% {
+        background: radial-gradient(circle,
+                #202020,
+                #161616,
+                #090909);
+    }
+
+    80% {
+        background: radial-gradient(circle,
+                #1a1a1a,
+                #141414,
+                #080808);
+    }
+
+    90% {
+        background: radial-gradient(circle,
+                #151515,
+                #121212,
+                #070707);
+    }
+
+    100% {
+        background: radial-gradient(circle,
+                #444444,
+                #222222,
+                #111111);
+    }
 }
 
 .h1-timesUp {
@@ -42,15 +126,4 @@
     background-color: #222222;
     text-align: center;
     cursor: pointer;
-}
-
-.ripple-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    top: 0%;
-    left: 0%;
-    transform: translate(-50%, -50%);
 }
